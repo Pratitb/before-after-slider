@@ -1,0 +1,57 @@
+@import url("https://fonts.googleapis.com/css2?family=Josefin+Sans&display=swap");
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Josefin Sans", sans-serif;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+}
+
+.container {
+  position: relative;
+  width: 30vw;
+  height: 80vh;
+  /* if we use position absolute on child elements then we need to mention height and width to the parent element as well, otherwise it collapses the container as we have removed the child elements from the parent element. width 100% and height 100% won't work. use VW and VH. add the same on the child containers as well and on the images as well if any */
+
+  .img-container-after,
+  .img-container-before {
+    position: absolute;
+    width: 30vw;
+    height: 80vh;
+    transition: 0.1s;
+    /* we added width and height because we will cut off the container */
+
+    /* very important. if we do not add fixed width and height to individual containers then it won't work */
+  }
+
+  .img-container-before{
+      width: 15vw;
+      overflow: hidden;
+  }
+}
+.slider{
+    width: 0.7rem;
+    background: rgb(233, 14, 14,1);
+    height: 100%;
+    position: absolute;
+    z-index: 10;
+    top: 0;
+    left: 50%; /* this will start the element from 50%. we want the entire element to be in 50% */
+    transform: translate(-50%, 0);
+    transition: 0.1s;
+    pointer-events: none;
+}
+img {
+  width: 30vw;
+  height: 80vh;
+  /* only upto this, the browser messes up the image, so we need cover. it squeezes the image when responsive */
+  object-fit: cover;
+  /* rather than squeezing it, it will zoom in on the image and take up proper space */
+}
